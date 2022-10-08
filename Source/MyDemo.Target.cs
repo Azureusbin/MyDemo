@@ -9,6 +9,6 @@ public class MyDemoTarget : TargetRules
 	{
 		Type = TargetType.Game;
 		DefaultBuildSettings = BuildSettingsVersion.V2;
-		ExtraModuleNames.AddRange( new string[] { "MyDemo" } );
+		ExtraModuleNames.AddRange( new string[] { "MyDemo", "MyDemoEditor" } );
 	}
 }
