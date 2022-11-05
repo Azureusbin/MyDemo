@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "BlueprintTemplateLibrary.generated.h"
 
 USTRUCT(BlueprintInternalUseOnly)
@@ -77,5 +78,20 @@ public:
 		P_NATIVE_BEGIN;
 		*static_cast<float*>(RESULT_PARAM) = Generic_GetArrayAVG(ArrayAddr,ArrayProperty, PropertyName);
 		P_NATIVE_END;
+	}
+
+	UFUNCTION(BlueprintCallable, meta=(BlueprintInternalUseOnly=true))
+	static void Hello_Internal(const FString& Message)
+	{
+		UE_LOG(LogTemp, Display, TEXT("Hello world from K2 Node."));
+	}
+
+	UFUNCTION(BlueprintCallable, meta=(BlueprintInternalUseOnly=true))
+	static void PrintMessage_Internal(const TArray<FString>& Messages)
+	{
+		for (FString Message : Messages)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::White, Message);
+		}
 	}
 };

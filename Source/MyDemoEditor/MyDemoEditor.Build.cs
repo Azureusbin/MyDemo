@@ -2,15 +2,15 @@
 
 using UnrealBuildTool;
 
-public class MyDemo : ModuleRules
+public class MyDemoEditor : ModuleRules
 {
-	public MyDemo(ReadOnlyTargetRules Target) : base(Target)
+	public MyDemoEditor(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "DeveloperSettings" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "SlateCore", "Slate" });
 
-		PrivateDependencyModuleNames.AddRange(new string[] { "HTTP" });
+		PrivateDependencyModuleNames.AddRange(new string[] { "HTTP", "BlueprintGraph", "KismetCompiler", "UnrealEd", "MyDemo", "GraphEditor", "AnimGraph", "ToolMenus" });
 
 		// Uncomment if you are using Slate UI
 		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
