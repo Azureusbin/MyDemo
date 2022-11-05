@@ -81,14 +81,17 @@ public:
 	}
 
 	UFUNCTION(BlueprintCallable, meta=(BlueprintInternalUseOnly=true))
-	static void Hello_Internal(const UObject* WorldContextObject, const FString& Message)
+	static void Hello_Internal(const FString& Message)
 	{
 		UE_LOG(LogTemp, Display, TEXT("Hello world from K2 Node."));
 	}
 
-	UFUNCTION(BlueprintCallable, meta=(BlueprintInternalUseOnly=true, WorldContext = "WorldContextObject"))
-	static void PrintMessage_Internal(const UObject* WorldContextObject, const FString& Message)
+	UFUNCTION(BlueprintCallable, meta=(BlueprintInternalUseOnly=true))
+	static void PrintMessage_Internal(const TArray<FString>& Messages)
 	{
-		UKismetSystemLibrary::PrintString(WorldContextObject, Message);
+		for (FString Message : Messages)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::White, Message);
+		}
 	}
 };
